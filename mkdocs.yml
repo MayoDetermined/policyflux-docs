@@ -51,6 +51,7 @@ theme:
 plugins:
   - search
   - mkdocstrings:
+      enabled: !ENV [ENABLE_MKDOCSTRINGS, true]
       handlers:
         python:
           options:
