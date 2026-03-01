@@ -1,72 +1,118 @@
 # PolicyFlux Documentation
 
-PolicyFlux is a Python framework for modeling legislative behavior, voting dynamics,
-and institutional political systems.
-
 <div class="hero" markdown>
 
-## Advanced legislative simulation for research and policy analytics
+## Computational framework for legislative process modeling
 
-PolicyFlux combines configurable actors, influence layers, and institutional presets
-to run deterministic and Monte Carlo experiments in a single, composable workflow.
+PolicyFlux provides a structured Python environment for simulating voting dynamics,
+institutional behavior, and policy outcomes. It supports deterministic and stochastic
+execution modes with configurable influence layers and actor models.
 
-[Get started now](getting-started.md){ .md-button .md-button--primary }
-[Explore API](api-overview.md){ .md-button }
+[Documentation](getting-started.md){ .md-button .md-button--primary }
+[API Reference](api-overview.md){ .md-button }
 
 </div>
 
-## Why PolicyFlux
+<div class="code-preview" markdown>
+<div class="code-preview__header">Example — baseline simulation</div>
+
+```python
+from policyflux import build_engine, IntegrationConfig, LayerConfig
+
+config = IntegrationConfig(
+    num_actors=50, policy_dim=2, iterations=100, seed=12345,
+    layer_config=LayerConfig(
+        include_ideal_point=True,
+        include_public_opinion=True,
+        public_support=0.60,
+    ),
+)
+
+engine = build_engine(config)
+engine.run()
+print(f"Pass rate: {engine.pass_rate:.1%}")
+```
+
+</div>
+
+## Overview
 
 <div class="grid cards" markdown>
 
 -   :material-tune-variant: **Composable configuration**
 
-	---
+    ---
 
-	Tune behavior with `IntegrationConfig`, `LayerConfig`, presets,
-	and flat overrides for fast scenario iteration.
+    Construct experiments using `IntegrationConfig`, institutional presets,
+    and flat parameter overrides. Modify scenario parameters without
+    altering simulation internals.
 
--   :material-chart-line: **Research-ready engines**
+-   :material-chart-line: **Deterministic and stochastic engines**
 
-	---
+    ---
 
-	Compare deterministic runs with sequential and parallel Monte Carlo
-	to capture baseline and distributional outcomes.
+    Execute single deterministic runs or parallel Monte Carlo batches.
+    Compare outcomes across institutional configurations using
+    built-in summary metrics.
 
--   :material-layers-triple: **Layered political dynamics**
+-   :material-layers-triple: **Layered influence model**
 
-	---
+    ---
 
-	Model public opinion, lobbying, media pressure, party discipline,
-	and agenda control in one pipeline.
+    Represent public opinion, lobbying, media pressure, party discipline,
+    and agenda control as independent, composable influence layers
+    with configurable aggregation.
 
--   :material-book-open-variant: **Complete developer docs**
+-   :material-book-open-variant: **Reference documentation**
 
-	---
+    ---
 
-	Move from quick start to deep module reference with consistent,
-	production-quality documentation pages.
+    Complete coverage from introductory guides through auto-generated
+    API reference. All public interfaces are documented with
+    parameter descriptions and usage context.
 
 </div>
 
-## Start here
+<hr class="section-divider">
 
-- New users: [Getting Started](getting-started.md)
-- Core public interfaces: [API Overview](api-overview.md)
-- Internal module map: [Architecture](architecture.md)
-- Advanced guides: [User Guide](user-guide/concepts.md)
-- Maintainer workflow: [Release Guide](release.md)
+## Navigation
+
+<div class="nav-cards" markdown>
+
+[:material-lightning-bolt: **Getting Started** <span>Installation and first simulation</span>](getting-started.md)
+
+[:material-api: **API Overview** <span>Public entry points and surface</span>](api-overview.md)
+
+[:material-sitemap-outline: **Architecture** <span>Module layout and design</span>](architecture.md)
+
+[:material-book-open-page-variant: **User Guide** <span>Concepts, layers, engines, presets</span>](user-guide/concepts.md)
+
+[:material-cog-outline: **Configuration** <span>Parameter reference</span>](user-guide/configuration.md)
+
+[:material-source-branch: **Contributing** <span>Development setup</span>](development/contributing.md)
+
+</div>
+
+<hr class="section-divider">
 
 ## Documentation scope
 
-- user guide for configuration, layers, engines, presets, and scenarios,
-- architecture and integration flow,
-- API reference generated from source code via MkDocStrings,
-- development quality checks and release operations.
+<ul class="scope-list" markdown>
+<li>User guide: configuration, layers, engines, presets, scenarios</li>
+<li>Architecture: module map, runtime flow, design principles</li>
+<li>API reference: auto-generated from source via MkDocStrings</li>
+<li>Development: testing, quality assurance, release operations</li>
+<li>Institutional presets: presidential and parliamentary systems</li>
+<li>Execution engines: Monte Carlo and deterministic modes</li>
+</ul>
 
-## Typical workflow
+<hr class="section-divider">
 
-1. Create an `IntegrationConfig` directly or from presets.
-2. Build an engine with `build_engine(config)`.
-3. Execute the simulation with `engine.run()`.
-4. Analyze metrics such as pass rate and accepted/rejected bills.
+## Standard workflow
+
+```text
+1. Configure    IntegrationConfig  — from presets, flat dicts, or direct construction
+2. Build        build_engine(config)
+3. Execute      engine.run()
+4. Analyze      engine.pass_rate, accepted_bills, rejected_bills
+```
