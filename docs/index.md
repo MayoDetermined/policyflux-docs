@@ -116,3 +116,54 @@ print(f"Pass rate: {engine.pass_rate:.1%}")
 3. Execute      engine.run()
 4. Analyze      engine.pass_rate, accepted_bills, rejected_bills
 ```
+
+## Choose your starting path
+
+| If you want to... | Start here | Then continue with... |
+| --- | --- | --- |
+| run your first simulation quickly | [Getting Started](getting-started.md) | [User Guide: Concepts](user-guide/concepts.md) |
+| tune simulation parameters precisely | [Configuration](user-guide/configuration.md) | [Layers](user-guide/layers.md), [Engines](user-guide/engines.md) |
+| compare institutional systems | [Presets](user-guide/presets.md) | [Scenarios](user-guide/scenarios.md) |
+| understand internal design | [Architecture](architecture.md) | [API Reference](reference/index.md) |
+
+## What makes results reproducible
+
+For comparative experiments, keep these inputs constant unless they are your intended independent variables:
+
+- random seed (`seed`),
+- number of actors (`num_actors`),
+- dimensionality (`policy_dim`),
+- layer aggregation strategy (`aggregation_strategy`),
+- layer order (`layer_names`) when explicitly configured.
+
+When changing assumptions, modify one group of parameters at a time (for example only `public_support`), then compare output deltas.
+
+## Common first-week workflows
+
+### 1) Baseline + one intervention
+
+1. Run a baseline configuration.
+2. Enable one layer (for example public opinion).
+3. Re-run with identical seed.
+4. Compare `pass_rate` and accepted/rejected counts.
+
+### 2) Institutional comparison
+
+1. Build two configs from system presets.
+2. Keep model scale and seed fixed.
+3. Run both engines.
+4. Compare aggregate outcomes.
+
+### 3) Robustness check
+
+1. Select one configuration.
+2. Repeat runs across a seed range.
+3. Inspect variance of `pass_rate`.
+4. Use Monte Carlo backends for larger batches.
+
+## Where to find details
+
+- Symbol-level API docs: [API Reference](reference/index.md)
+- Layer and runtime mechanics: [Layers and Engines](layers-and-engines.md)
+- Contributor process and QA: [Development](development/contributing.md)
+- Release and deployment workflow: [Release](release.md), [Docs Deployment](deployment.md)

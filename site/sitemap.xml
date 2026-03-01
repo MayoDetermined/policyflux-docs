@@ -1,135 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/api-overview/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/api-overview/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/architecture/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/architecture/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/configuration/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/configuration/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/contributing/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/contributing/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/deployment/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/deployment/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/getting-started/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/getting-started/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/layers-and-engines/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/layers-and-engines/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/release/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/release/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/development/contributing/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/development/contributing/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/development/testing-and-quality/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/development/testing-and-quality/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/core/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/core/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/data-processing/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/data-processing/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/engines/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/engines/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/integration-builders/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/integration-builders/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/integration-presets/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/integration-presets/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/integration/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/integration/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/layers/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/layers/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/math-models/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/math-models/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/package-root/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/package-root/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/platform/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/platform/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/scenarios/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/scenarios/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/toolbox-special-actors/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/toolbox-special-actors/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/toolbox/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/toolbox/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/reference/utils/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/reference/utils/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/user-guide/concepts/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/user-guide/concepts/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/user-guide/configuration/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/user-guide/configuration/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/user-guide/engines/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/user-guide/engines/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/user-guide/fluent-api/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/user-guide/fluent-api/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/user-guide/layers/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/user-guide/layers/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/user-guide/presets/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/user-guide/presets/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
     <url>
-         <loc>https://mayodetermined.github.io/policyflux/user-guide/scenarios/</loc>
+         <loc>https://mayodetermined.github.io/policyflux-docs/user-guide/scenarios/</loc>
          <lastmod>2026-03-01</lastmod>
     </url>
 </urlset>

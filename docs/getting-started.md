@@ -70,6 +70,8 @@ pip install -e ".[dev]"
 python -c "import policyflux; print(policyflux.__version__)"
 ```
 
+If the command prints a version number, the package is available in your active Python environment.
+
 ## Minimal simulation
 
 ```python
@@ -96,6 +98,16 @@ print(f"Pass rate: {engine.pass_rate:.1%}")
 print(f"Accepted: {engine.accepted_bills}, Rejected: {engine.rejected_bills}")
 ```
 
+## Read the first output correctly
+
+In your first run, focus on directional interpretation, not on a specific percentage target:
+
+- `pass_rate`: overall proportion of accepted bills,
+- `accepted_bills` and `rejected_bills`: absolute outcome counts,
+- repeatability: rerun with the same `seed` to confirm stable behavior.
+
+If results change with an identical script, verify that you are using the same environment and package version.
+
 ## Quick comparative run (preset-based)
 
 ```python
@@ -118,6 +130,41 @@ print(f"Presidential pass rate: {eng_a.pass_rate:.1%}")
 print(f"Parliamentary pass rate: {eng_b.pass_rate:.1%}")
 ```
 
+This gives you a fast institutional comparison while keeping actor count, policy dimensions, iteration count, and seed constant.
+
+## First reproducibility sweep
+
+Use a small seed sweep to estimate directional robustness:
+
+```python
+from policyflux import build_engine, create_presidential_config
+
+rates = []
+for seed in range(10, 20):
+    config = create_presidential_config(
+        num_actors=100,
+        policy_dim=2,
+        iterations=200,
+        seed=seed,
+    )
+    engine = build_engine(config)
+    engine.run()
+    rates.append(engine.pass_rate)
+
+print(f"min={min(rates):.1%}, max={max(rates):.1%}, avg={sum(rates)/len(rates):.1%}")
+```
+
+## Common setup issues
+
+!!! warning "Import error after installation"
+    Confirm your terminal uses the same Python interpreter where `policyflux` was installed.
+
+!!! warning "Unstable comparisons"
+    Keep `seed` fixed and change only one parameter group per experiment.
+
+!!! warning "Runtime too slow"
+    Reduce `num_actors` and `iterations` for exploratory work, then scale up.
+
 ## What to inspect after run
 
 - `engine.pass_rate`
@@ -125,6 +172,13 @@ print(f"Parliamentary pass rate: {eng_b.pass_rate:.1%}")
 - `engine.rejected_bills`
 
 These metrics provide a baseline before adding more complex layers and actor mechanics.
+
+## Suggested next 30 minutes
+
+1. Read [Concepts](user-guide/concepts.md) to map model assumptions.
+2. Tune one variable in [Configuration](user-guide/configuration.md).
+3. Compare two systems with [Presets](user-guide/presets.md).
+4. Review runtime options in [Engines](user-guide/engines.md).
 
 ## Development commands
 
