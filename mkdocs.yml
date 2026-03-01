@@ -1,0 +1,133 @@
+site_name: PolicyFlux Documentation
+site_description: Advanced library for modeling and simulating legislative processes and political institutions
+site_url: https://mayodetermined.github.io/policyflux/
+repo_url: https://github.com/MayoDetermined/policyflux
+repo_name: MayoDetermined/policyflux
+edit_uri: edit/main/docs/
+
+copyright: Copyright © 2026 PolicyFlux contributors
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.path
+    - navigation.sections
+    - navigation.top
+    - navigation.tabs
+    - toc.follow
+    - search.share
+    - content.action.edit
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: false
+            show_root_heading: true
+            heading_level: 2
+            inherited_members: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            show_root_toc_entry: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/MayoDetermined/policyflux
+      name: GitHub repository
+    - icon: fontawesome/solid/box-open
+      link: https://pypi.org/project/policyflux/
+      name: PyPI package
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - User Guide:
+      - Concepts: user-guide/concepts.md
+      - Configuration: user-guide/configuration.md
+      - Fluent API: user-guide/fluent-api.md
+      - Layers: user-guide/layers.md
+      - Engines: user-guide/engines.md
+      - Presets: user-guide/presets.md
+      - Scenarios: user-guide/scenarios.md
+  - Architecture: architecture.md
+  - API Overview: api-overview.md
+  - Practical Guides:
+      - Configuration (Quick): configuration.md
+      - Layers and Engines: layers-and-engines.md
+      - Contributing (Quick): contributing.md
+  - API Reference:
+      - Reference Index: reference/index.md
+      - Package Root: reference/package-root.md
+      - Core: reference/core.md
+      - Layers: reference/layers.md
+      - Engines: reference/engines.md
+      - Integration: reference/integration.md
+      - Integration Builders: reference/integration-builders.md
+      - Integration Presets: reference/integration-presets.md
+      - Toolbox: reference/toolbox.md
+      - Toolbox Special Actors: reference/toolbox-special-actors.md
+      - Data Processing: reference/data-processing.md
+      - Math Models: reference/math-models.md
+      - Scenarios: reference/scenarios.md
+      - Utils: reference/utils.md
+      - Exceptions & Logging: reference/platform.md
+  - Development:
+      - Testing and Quality: development/testing-and-quality.md
+      - Contributing: development/contributing.md
+      - Release Guide: release.md
+      - Docs Deployment: deployment.md
