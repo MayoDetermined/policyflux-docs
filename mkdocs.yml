@@ -1,8 +1,8 @@
 site_name: PolicyFlux Documentation
 site_description: Advanced library for modeling and simulating legislative processes and political institutions
-site_url: https://mayodetermined.github.io/policyflux/
-repo_url: https://github.com/MayoDetermined/policyflux
-repo_name: MayoDetermined/policyflux
+site_url: https://mayodetermined.github.io/policyflux-docs/
+repo_url: https://github.com/MayoDetermined/policyflux-docs
+repo_name: MayoDetermined/policyflux-docs
 edit_uri: edit/main/docs/
 
 copyright: Copyright © 2026 PolicyFlux contributors
