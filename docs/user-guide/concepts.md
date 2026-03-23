@@ -31,7 +31,7 @@ In practice:
 Conceptually, preference compatibility can be thought of as:
 
 $$
-	ext{support tendency} \propto -\text{distance}(\text{actor position}, \text{bill position})
+\text{support tendency} \propto -\text{distance}(\text{actor position}, \text{bill position})
 $$
 
 ## Layers

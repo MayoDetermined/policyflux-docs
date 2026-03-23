@@ -28,13 +28,19 @@ PolicyFlux is organized around composable abstractions for actors, bills, influe
 
 ```text
 policyflux/
-├── core/
-├── layers/
-├── engines/
-├── integration/
-├── toolbox/
-├── data_processing/
-└── utils/
+├── core/            # abstractions, typing, contexts, strategies, DI container
+├── layers/          # composable decision layers (7 built-in + neural + ERGM)
+├── engines/         # deterministic + sequential/parallel Monte Carlo
+├── integration/     # config, builders, presets, registry, fluent API
+│   ├── builders/    # engine, congress, layer, actor, mechanics builders
+│   └── presets/     # presidential, parliamentary, semi-presidential, 10 countries
+├── toolbox/         # concrete actor/bill/congress/executive implementations
+│   └── special_actors/  # lobbyist, whip, speaker, president
+├── math_models/     # ERGM, lobbying ERGM, Tullock contest
+├── model/           # TF-style Sequential + Functional model API
+├── scenarios/       # comparative systems, lobbying/discipline/veto sweeps, country comparison
+├── data_processing/ # text vectorization and encoding
+└── utils/           # bar chart and pie chart reporting
 ```
 
 ## Subsystem responsibilities
@@ -42,12 +48,15 @@ policyflux/
 | Module | Primary responsibility |
 | --- | --- |
 | `core` | abstract interfaces, contexts, typing, aggregation and voting strategies |
-| `layers` | composable decision/influence layers |
+| `layers` | composable decision/influence layers (ideal point, public opinion, lobbying, media, party, agenda, neural, ERGM) |
 | `engines` | deterministic and Monte Carlo execution runtime |
-| `integration` | configuration, builders, presets, registry wiring |
-| `toolbox` | concrete actor, bill, congress and executive implementations |
+| `integration` | configuration, builders, presets, registry wiring, fluent API |
+| `toolbox` | concrete actor, bill, congress, executive, and multi-chamber parliament implementations |
+| `math_models` | mathematical models: ERGM, lobbying ERGM (bipartite), Tullock rent-seeking contest |
+| `model` | TF-style model API: `Sequential`, `Model` (functional), `Input`, and model `layers` |
+| `scenarios` | reusable experiment runners: comparative systems, sweeps, country parliament comparison |
 | `data_processing` | text and embedding-related helpers |
-| `utils` | reports and supporting runtime utilities |
+| `utils` | visualization (bar charts, pie charts) and supporting runtime utilities |
 
 ## Runtime flow
 
@@ -63,7 +72,7 @@ policyflux/
 At a conceptual level, outcome generation follows:
 
 $$
-	ext{Outcome} = \text{VotingStrategy}\left(\text{Aggregate}\left(\text{Layer}_1, \dots, \text{Layer}_n\right)\right)
+\text{Outcome} = \text{VotingStrategy}\left(\text{Aggregate}\left(\text{Layer}_1, \dots, \text{Layer}_n\right)\right)
 $$
 
 This separation makes it easier to test, compare, and swap individual mechanisms.
