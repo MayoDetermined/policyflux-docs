@@ -43,11 +43,11 @@ Core layers include:
 At a high level:
 
 $$
-	ext{Vote propensity} = \text{Aggregate}(\text{Layer}_1, \dots, \text{Layer}_n)
+\text{Vote propensity} = \text{Aggregate}(\text{Layer}_1, \dots, \text{Layer}_n)
 $$
 
 $$
-	ext{Outcome} = \text{VotingStrategy}(\text{Vote propensity})
+\text{Outcome} = \text{VotingStrategy}(\text{Vote propensity})
 $$
 
 ### Layer composition

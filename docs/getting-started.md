@@ -154,6 +154,40 @@ for seed in range(10, 20):
 print(f"min={min(rates):.1%}, max={max(rates):.1%}, avg={sum(rates)/len(rates):.1%}")
 ```
 
+
+## One-liner runners
+
+Run a full simulation in a single function call:
+
+```python
+from policyflux import run_presidential
+
+votes = run_presidential(num_actors=100, policy_dim=2, iterations=200, seed=42)
+passed = sum(1 for v in votes if v > 50)
+print(f"Pass rate: {passed / len(votes):.1%}")
+print(f"Accepted: {passed}, Rejected: {len(votes) - passed}")
+```
+
+Available: `run_presidential`, `run_parliamentary`, `run_semi_presidential`.
+
+## TF-style model API
+
+Construct simulations as layer graphs, similar to Keras:
+
+```python
+from policyflux.model import Sequential
+from policyflux.model import layers as L
+
+model = Sequential(num_actors=100, policy_dim=2)
+model.add(L.IdealPoint())
+model.add(L.PublicOpinion(support=0.6))
+model.add(L.PartyDiscipline(strength=0.5, line_support=0.7))
+
+model.compile(executive="presidential", aggregation="sequential")
+results = model.run(iterations=200, seed=42)
+model.summary()
+```
+
 ## Common setup issues
 
 !!! warning "Import error after installation"

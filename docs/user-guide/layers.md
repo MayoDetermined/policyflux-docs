@@ -8,10 +8,11 @@ Built-in layers:
 - `MediaPressureLayer`
 - `PartyDisciplineLayer`
 - `GovernmentAgendaLayer`
+- `LobbyingERGMPLayer` (network-aware lobbying via ERGM bipartite graphs)
 
 Optional:
 
-- neural layer support (`include_neural` + custom factory).
+- `SequentialNeuralLayer` (PyTorch-based; requires `pip install 'policyflux[torch]'`).
 
 ## Custom composition
 
@@ -23,10 +24,12 @@ Use `layer_names` and `layer_overrides` to build an explicit layer pipeline.
 | --- | --- | --- |
 | `IdealPointLayer` | actor-bill preference proximity | baseline preference shape |
 | `PublicOpinionLayer` | electorate-level pressure | `public_support` |
-| `LobbyingLayer` | targeted influence pressure | lobbyist count/strength |
-| `MediaPressureLayer` | salience and narrative pressure | media intensity |
-| `PartyDisciplineLayer` | party-line conformity | discipline strength |
-| `GovernmentAgendaLayer` | agenda access/priority effects | executive/speaker alignment |
+| `LobbyingLayer` | targeted influence pressure | `lobbying_intensity`, lobbyist count/strength |
+| `MediaPressureLayer` | salience and narrative pressure | `media_pressure` |
+| `PartyDisciplineLayer` | party-line conformity | `party_discipline_strength`, `party_line_support` |
+| `GovernmentAgendaLayer` | agenda access/priority effects | `government_agenda_pm_strength` |
+| `LobbyingERGMPLayer` | network-aware lobbying via ERGM bipartite graph | ERGM model parameters |
+| `SequentialNeuralLayer` | trainable PyTorch neural layer | custom architecture factory |
 
 ## Minimal layer-first workflow
 
