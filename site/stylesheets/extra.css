@@ -334,6 +334,12 @@ html {
   margin: 1rem 0 1.5rem;
 }
 
+/* MkDocs md_in_html wraps each link in a <p>; reset its margin so the
+   grid gap is the only spacing between cards. */
+.nav-cards p {
+  margin: 0;
+}
+
 .nav-cards a {
   display: flex;
   align-items: center;
@@ -344,6 +350,9 @@ html {
   text-decoration: none !important;
   color: inherit;
   transition: all var(--pfx-transition);
+  /* Fill the full width of the wrapping <p> */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .nav-cards a:hover {
@@ -355,15 +364,17 @@ html {
 .nav-cards a .twemoji {
   font-size: 1.2rem;
   flex-shrink: 0;
+  /* Ensure the icon is never dimmed by the generic span rule below */
+  opacity: 1;
+  margin-top: 0;
 }
 
 .nav-cards a strong {
-  display: block;
   font-size: 0.8rem;
 }
 
-.nav-cards a span {
-  display: block;
+/* Target only the description span, not the twemoji icon span */
+.nav-cards a span:not(.twemoji) {
   font-size: 0.72rem;
   opacity: 0.55;
   margin-top: 0.1rem;

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -1844,13 +1844,19 @@
 </div>
 <h2 id="high-level-module-layout">High-level module layout<a class="headerlink" href="#high-level-module-layout" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>policyflux/
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── core/
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── layers/
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── engines/
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── integration/
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── toolbox/
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── data_processing/
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>└── utils/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── core/            # abstractions, typing, contexts, strategies, DI container
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── layers/          # composable decision layers (7 built-in + neural + ERGM)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── engines/         # deterministic + sequential/parallel Monte Carlo
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── integration/     # config, builders, presets, registry, fluent API
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   ├── builders/    # engine, congress, layer, actor, mechanics builders
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   └── presets/     # presidential, parliamentary, semi-presidential, 10 countries
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── toolbox/         # concrete actor/bill/congress/executive implementations
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   └── special_actors/  # lobbyist, whip, speaker, president
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>├── math_models/     # ERGM, lobbying ERGM, Tullock contest
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>├── model/           # TF-style Sequential + Functional model API
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>├── scenarios/       # comparative systems, lobbying/discipline/veto sweeps, country comparison
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>├── data_processing/ # text vectorization and encoding
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>└── utils/           # bar chart and pie chart reporting
 </code></pre></div>
 <h2 id="subsystem-responsibilities">Subsystem responsibilities<a class="headerlink" href="#subsystem-responsibilities" title="Permanent link">&para;</a></h2>
 <table>
@@ -1867,7 +1873,7 @@
 </tr>
 <tr>
 <td><code>layers</code></td>
-<td>composable decision/influence layers</td>
+<td>composable decision/influence layers (ideal point, public opinion, lobbying, media, party, agenda, neural, ERGM)</td>
 </tr>
 <tr>
 <td><code>engines</code></td>
@@ -1875,11 +1881,23 @@
 </tr>
 <tr>
 <td><code>integration</code></td>
-<td>configuration, builders, presets, registry wiring</td>
+<td>configuration, builders, presets, registry wiring, fluent API</td>
 </tr>
 <tr>
 <td><code>toolbox</code></td>
-<td>concrete actor, bill, congress and executive implementations</td>
+<td>concrete actor, bill, congress, executive, and multi-chamber parliament implementations</td>
+</tr>
+<tr>
+<td><code>math_models</code></td>
+<td>mathematical models: ERGM, lobbying ERGM (bipartite), Tullock rent-seeking contest</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>TF-style model API: <code>Sequential</code>, <code>Model</code> (functional), <code>Input</code>, and model <code>layers</code></td>
+</tr>
+<tr>
+<td><code>scenarios</code></td>
+<td>reusable experiment runners: comparative systems, sweeps, country parliament comparison</td>
 </tr>
 <tr>
 <td><code>data_processing</code></td>
@@ -1887,7 +1905,7 @@
 </tr>
 <tr>
 <td><code>utils</code></td>
-<td>reports and supporting runtime utilities</td>
+<td>visualization (bar charts, pie charts) and supporting runtime utilities</td>
 </tr>
 </tbody>
 </table>
@@ -1903,7 +1921,7 @@
 <h2 id="decision-pipeline-model">Decision pipeline model<a class="headerlink" href="#decision-pipeline-model" title="Permanent link">&para;</a></h2>
 <p>At a conceptual level, outcome generation follows:</p>
 <p>$$
-    ext{Outcome} = \text{VotingStrategy}\left(\text{Aggregate}\left(\text{Layer}_1, \dots, \text{Layer}_n\right)\right)
+\text{Outcome} = \text{VotingStrategy}\left(\text{Aggregate}\left(\text{Layer}_1, \dots, \text{Layer}_n\right)\right)
 $$</p>
 <p>This separation makes it easier to test, compare, and swap individual mechanisms.</p>
 <h2 id="layer-registration">Layer registration<a class="headerlink" href="#layer-registration" title="Permanent link">&para;</a></h2>

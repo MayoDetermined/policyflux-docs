@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -591,6 +591,28 @@
     <span class="md-ellipsis">
       
         First reproducibility sweep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-liner-runners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One-liner runners
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tf-style-model-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TF-style model API
       
     </span>
   </a>
@@ -1866,6 +1888,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#one-liner-runners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One-liner runners
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tf-style-model-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TF-style model API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#common-setup-issues" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2010,7 +2054,7 @@
 </code></pre></div>
 <p>If the command prints a version number, the package is available in your active Python environment.</p>
 <h2 id="minimal-simulation">Minimal simulation<a class="headerlink" href="#minimal-simulation" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">policyflux</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_engine</span><span class="p">,</span> <span class="n">IntegrationConfig</span><span class="p">,</span> <span class="n">LayerConfig</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">policyflux</span> <span class="kn">import</span> <span class="n">build_engine</span><span class="p">,</span> <span class="n">IntegrationConfig</span><span class="p">,</span> <span class="n">LayerConfig</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">config</span> <span class="o">=</span> <span class="n">IntegrationConfig</span><span class="p">(</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">num_actors</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
@@ -2041,7 +2085,7 @@
 </ul>
 <p>If results change with an identical script, verify that you are using the same environment and package version.</p>
 <h2 id="quick-comparative-run-preset-based">Quick comparative run (preset-based)<a class="headerlink" href="#quick-comparative-run-preset-based" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">policyflux</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">policyflux</span> <span class="kn">import</span> <span class="p">(</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">build_engine</span><span class="p">,</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">create_parliamentary_config</span><span class="p">,</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">create_presidential_config</span><span class="p">,</span>
@@ -2062,7 +2106,7 @@
 <p>This gives you a fast institutional comparison while keeping actor count, policy dimensions, iteration count, and seed constant.</p>
 <h2 id="first-reproducibility-sweep">First reproducibility sweep<a class="headerlink" href="#first-reproducibility-sweep" title="Permanent link">&para;</a></h2>
 <p>Use a small seed sweep to estimate directional robustness:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">policyflux</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_engine</span><span class="p">,</span> <span class="n">create_presidential_config</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">policyflux</span> <span class="kn">import</span> <span class="n">build_engine</span><span class="p">,</span> <span class="n">create_presidential_config</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">rates</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
@@ -2077,6 +2121,30 @@
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="n">rates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">pass_rate</span><span class="p">)</span>
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
 <a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;min=</span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">, max=</span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">, avg=</span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="one-liner-runners">One-liner runners<a class="headerlink" href="#one-liner-runners" title="Permanent link">&para;</a></h2>
+<p>Run a full simulation in a single function call:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">policyflux</span> <span class="kn">import</span> <span class="n">run_presidential</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">votes</span> <span class="o">=</span> <span class="n">run_presidential</span><span class="p">(</span><span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">policy_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">passed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">votes</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pass rate: </span><span class="si">{</span><span class="n">passed</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">votes</span><span class="p">)</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accepted: </span><span class="si">{</span><span class="n">passed</span><span class="si">}</span><span class="s2">, Rejected: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">votes</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">passed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Available: <code>run_presidential</code>, <code>run_parliamentary</code>, <code>run_semi_presidential</code>.</p>
+<h2 id="tf-style-model-api">TF-style model API<a class="headerlink" href="#tf-style-model-api" title="Permanent link">&para;</a></h2>
+<p>Construct simulations as layer graphs, similar to Keras:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">policyflux.model</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">from</span> <span class="nn">policyflux.model</span> <span class="kn">import</span> <span class="n">layers</span> <span class="k">as</span> <span class="n">L</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">(</span><span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">policy_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">IdealPoint</span><span class="p">())</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">PublicOpinion</span><span class="p">(</span><span class="n">support</span><span class="o">=</span><span class="mf">0.6</span><span class="p">))</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">PartyDiscipline</span><span class="p">(</span><span class="n">strength</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">line_support</span><span class="o">=</span><span class="mf">0.7</span><span class="p">))</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">executive</span><span class="o">=</span><span class="s2">&quot;presidential&quot;</span><span class="p">,</span> <span class="n">aggregation</span><span class="o">=</span><span class="s2">&quot;sequential&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="common-setup-issues">Common setup issues<a class="headerlink" href="#common-setup-issues" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
@@ -2106,10 +2174,10 @@
 <li>Review runtime options in <a href="../user-guide/engines/">Engines</a>.</li>
 </ol>
 <h2 id="development-commands">Development commands<a class="headerlink" href="#development-commands" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pytest
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>ruff<span class="w"> </span>check<span class="w"> </span>policyflux/
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>mypy<span class="w"> </span>policyflux/
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>mkdocs<span class="w"> </span>serve
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pytest
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ruff<span class="w"> </span>check<span class="w"> </span>policyflux/
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>mypy<span class="w"> </span>policyflux/
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>mkdocs<span class="w"> </span>serve
 </code></pre></div>
 <h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">&para;</a></h2>
 <p>Choose your next path:</p>
