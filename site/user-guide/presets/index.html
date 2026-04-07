@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -782,6 +782,17 @@
     <span class="md-ellipsis">
       
         Preset experiment checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#country-specific-parliament-presets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Country-specific parliament presets
       
     </span>
   </a>
@@ -1749,6 +1760,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#country-specific-parliament-presets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Country-specific parliament presets
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1839,7 +1861,7 @@
 </ul>
 <p>They are ideal for baseline scenario design before moving to custom configuration.</p>
 <h2 id="standard-comparative-pattern">Standard comparative pattern<a class="headerlink" href="#standard-comparative-pattern" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">policyflux</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">policyflux</span> <span class="kn">import</span> <span class="p">(</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">build_engine</span><span class="p">,</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">create_presidential_config</span><span class="p">,</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">create_parliamentary_config</span><span class="p">,</span>
@@ -1861,7 +1883,7 @@
 </code></pre></div>
 <h2 id="preset-targeted-adjustment">Preset + targeted adjustment<a class="headerlink" href="#preset-targeted-adjustment" title="Permanent link">&para;</a></h2>
 <p>After creating a preset config, apply small focused changes for hypothesis testing.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">policyflux</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_presidential_config</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">policyflux</span> <span class="kn">import</span> <span class="n">create_presidential_config</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">config</span> <span class="o">=</span> <span class="n">create_presidential_config</span><span class="p">(</span><span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">policy_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">config</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">with_flat</span><span class="p">(</span><span class="n">public_support</span><span class="o">=</span><span class="mf">0.64</span><span class="p">)</span>
@@ -1874,6 +1896,98 @@
 <li>Change one additional variable at a time.</li>
 <li>Record pass-rate deltas and variance across seed sweeps.</li>
 </ol>
+<h2 id="country-specific-parliament-presets">Country-specific parliament presets<a class="headerlink" href="#country-specific-parliament-presets" title="Permanent link">&para;</a></h2>
+<p>Ten ready-made bicameral (or unicameral) parliament models are available for structural comparison.
+Each preset returns a fully configured <code>MultiChamberParliamentModel</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">policyflux.integration.presets.parliament_presets</span> <span class="kn">import</span> <span class="p">(</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">create_uk_parliament</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">create_us_congress</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">list_presets</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kn">from</span> <span class="nn">policyflux.toolbox</span> <span class="kn">import</span> <span class="n">SequentialBill</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># List all available preset names</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">list_presets</span><span class="p">())</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">uk</span> <span class="o">=</span> <span class="n">create_uk_parliament</span><span class="p">()</span>    <span class="c1"># Commons (650) + Lords (800), suspensive veto</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">us</span> <span class="o">=</span> <span class="n">create_us_congress</span><span class="p">()</span>      <span class="c1"># House (435) + Senate (100), full veto</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">bill</span> <span class="o">=</span> <span class="n">SequentialBill</span><span class="p">()</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">bill</span><span class="o">.</span><span class="n">make_random_position</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">result</span> <span class="o">=</span> <span class="n">uk</span><span class="o">.</span><span class="n">cast_votes</span><span class="p">(</span><span class="n">bill</span><span class="p">)</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Passed: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">passed</span><span class="si">}</span><span class="s2">, Rounds: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">rounds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Available country presets:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Parliament</th>
+<th>Upper-house power</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uk</code></td>
+<td>UK Parliament (Commons + Lords)</td>
+<td>Suspensive veto</td>
+</tr>
+<tr>
+<td><code>us</code></td>
+<td>US Congress (House + Senate)</td>
+<td>Full veto</td>
+</tr>
+<tr>
+<td><code>germany</code></td>
+<td>Bundestag / Bundesrat</td>
+<td>Full veto (consent laws)</td>
+</tr>
+<tr>
+<td><code>france</code></td>
+<td>Parlement français</td>
+<td>Suspensive veto</td>
+</tr>
+<tr>
+<td><code>italy</code></td>
+<td>Parlamento italiano</td>
+<td>Full veto (perfect bicameralism)</td>
+</tr>
+<tr>
+<td><code>poland</code></td>
+<td>Sejm + Senat</td>
+<td>Override by lower chamber</td>
+</tr>
+<tr>
+<td><code>sweden</code></td>
+<td>Riksdag</td>
+<td>Unicameral</td>
+</tr>
+<tr>
+<td><code>spain</code></td>
+<td>Cortes Generales</td>
+<td>Suspensive veto</td>
+</tr>
+<tr>
+<td><code>australia</code></td>
+<td>Parliament of Australia</td>
+<td>Full veto</td>
+</tr>
+<tr>
+<td><code>canada</code></td>
+<td>Parliament of Canada</td>
+<td>Suspensive veto</td>
+</tr>
+</tbody>
+</table>
+<p>These presets use realistic membership sizes and constitutional veto structures.
+Use <code>chamber_size</code> override when you need faster exploratory runs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">policyflux.scenarios</span> <span class="kn">import</span> <span class="n">country_comparison</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">results</span> <span class="o">=</span> <span class="n">country_comparison</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chamber_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">n_bills</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">parliament_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">passage_rate</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p>For advanced sweeps, continue with <a href="../scenarios/">Scenarios</a>.</p>
 
 

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -1875,10 +1875,11 @@
 <li><code>MediaPressureLayer</code></li>
 <li><code>PartyDisciplineLayer</code></li>
 <li><code>GovernmentAgendaLayer</code></li>
+<li><code>LobbyingERGMPLayer</code> (network-aware lobbying via ERGM bipartite graphs)</li>
 </ul>
 <p>Optional:</p>
 <ul>
-<li>neural layer support (<code>include_neural</code> + custom factory).</li>
+<li><code>SequentialNeuralLayer</code> (PyTorch-based; requires <code>pip install 'policyflux[torch]'</code>).</li>
 </ul>
 <h2 id="custom-composition">Custom composition<a class="headerlink" href="#custom-composition" title="Permanent link">&para;</a></h2>
 <p>Use <code>layer_names</code> and <code>layer_overrides</code> to build an explicit layer pipeline.</p>
@@ -1905,22 +1906,32 @@
 <tr>
 <td><code>LobbyingLayer</code></td>
 <td>targeted influence pressure</td>
-<td>lobbyist count/strength</td>
+<td><code>lobbying_intensity</code>, lobbyist count/strength</td>
 </tr>
 <tr>
 <td><code>MediaPressureLayer</code></td>
 <td>salience and narrative pressure</td>
-<td>media intensity</td>
+<td><code>media_pressure</code></td>
 </tr>
 <tr>
 <td><code>PartyDisciplineLayer</code></td>
 <td>party-line conformity</td>
-<td>discipline strength</td>
+<td><code>party_discipline_strength</code>, <code>party_line_support</code></td>
 </tr>
 <tr>
 <td><code>GovernmentAgendaLayer</code></td>
 <td>agenda access/priority effects</td>
-<td>executive/speaker alignment</td>
+<td><code>government_agenda_pm_strength</code></td>
+</tr>
+<tr>
+<td><code>LobbyingERGMPLayer</code></td>
+<td>network-aware lobbying via ERGM bipartite graph</td>
+<td>ERGM model parameters</td>
+</tr>
+<tr>
+<td><code>SequentialNeuralLayer</code></td>
+<td>trainable PyTorch neural layer</td>
+<td>custom architecture factory</td>
 </tr>
 </tbody>
 </table>
@@ -1934,7 +1945,7 @@
 </ol>
 <p>This yields cleaner attribution than enabling many layers at once.</p>
 <h2 id="explicit-order-and-overrides-example">Explicit order and overrides example<a class="headerlink" href="#explicit-order-and-overrides-example" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">policyflux</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntegrationConfig</span><span class="p">,</span> <span class="n">LayerConfig</span><span class="p">,</span> <span class="n">build_engine</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">policyflux</span> <span class="kn">import</span> <span class="n">IntegrationConfig</span><span class="p">,</span> <span class="n">LayerConfig</span><span class="p">,</span> <span class="n">build_engine</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">config</span> <span class="o">=</span> <span class="n">IntegrationConfig</span><span class="p">(</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>

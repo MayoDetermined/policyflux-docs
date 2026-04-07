@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -780,6 +780,78 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-scenario-runners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in scenario runners
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in scenario runners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparative-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparative systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lobbying-intensity-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lobbying intensity sweep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#party-discipline-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Party discipline sweep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#veto-player-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Veto player sweep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#country-parliament-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Country parliament comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1728,6 +1800,78 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#built-in-scenario-runners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in scenario runners
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in scenario runners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparative-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparative systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lobbying-intensity-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lobbying intensity sweep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#party-discipline-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Party discipline sweep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#veto-player-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Veto player sweep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#country-parliament-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Country parliament comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recommended-scenario-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1861,6 +2005,56 @@
 <li>preserve comparability across runs,</li>
 <li>produce interpretable summary outputs for analysis.</li>
 </ul>
+<h2 id="built-in-scenario-runners">Built-in scenario runners<a class="headerlink" href="#built-in-scenario-runners" title="Permanent link">&para;</a></h2>
+<p>Each scenario module exposes a <code>run()</code> function that executes a complete
+structured experiment and returns typed result objects.</p>
+<h3 id="comparative-systems">Comparative systems<a class="headerlink" href="#comparative-systems" title="Permanent link">&para;</a></h3>
+<p>Compare presidential, parliamentary, and semi-presidential systems side by side:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">policyflux.scenarios</span> <span class="kn">import</span> <span class="n">comparative_systems</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">results</span> <span class="o">=</span> <span class="n">comparative_systems</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">system</span><span class="si">}</span><span class="s2">: passage rate </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">passage_rate</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">, avg vote share </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">avg_vote_share</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="lobbying-intensity-sweep">Lobbying intensity sweep<a class="headerlink" href="#lobbying-intensity-sweep" title="Permanent link">&para;</a></h3>
+<p>Sweep lobbying intensity from 0.0 to 1.0 across evenly-spaced levels:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">policyflux.scenarios</span> <span class="kn">import</span> <span class="n">lobbying_sweep</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">points</span> <span class="o">=</span> <span class="n">lobbying_sweep</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Intensity </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">lobbying_intensity</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">: passage rate </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">passage_rate</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="party-discipline-sweep">Party discipline sweep<a class="headerlink" href="#party-discipline-sweep" title="Permanent link">&para;</a></h3>
+<p>Sweep party discipline strength (returns two series: pro-bill and anti-bill):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">policyflux.scenarios</span> <span class="kn">import</span> <span class="n">party_discipline_sweep</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">results</span> <span class="o">=</span> <span class="n">party_discipline_sweep</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;pro&quot;</span><span class="p">]:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Discipline </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">discipline_strength</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">: passage rate </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">passage_rate</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="veto-player-sweep">Veto player sweep<a class="headerlink" href="#veto-player-sweep" title="Permanent link">&para;</a></h3>
+<p>Sweep executive approval rating across presidential and semi-presidential systems:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">policyflux.scenarios</span> <span class="kn">import</span> <span class="n">veto_player_sweep</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">results</span> <span class="o">=</span> <span class="n">veto_player_sweep</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;presidential&quot;</span><span class="p">]:</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Approval </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">approval</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">: passage rate </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">passage_rate</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="country-parliament-comparison">Country parliament comparison<a class="headerlink" href="#country-parliament-comparison" title="Permanent link">&para;</a></h3>
+<p>Compare all 10 country parliament presets on identical bills:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">policyflux.scenarios</span> <span class="kn">import</span> <span class="n">country_comparison</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">results</span> <span class="o">=</span> <span class="n">country_comparison</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">n_bills</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">policy_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">parliament_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">passage_rate</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">n_passed</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">n_bills</span><span class="si">}</span><span class="s2"> bills)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Subset of countries:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">results</span> <span class="o">=</span> <span class="n">country_comparison</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">presets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uk&quot;</span><span class="p">,</span> <span class="s2">&quot;us&quot;</span><span class="p">,</span> <span class="s2">&quot;germany&quot;</span><span class="p">,</span> <span class="s2">&quot;sweden&quot;</span><span class="p">],</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">n_bills</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">policy_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span>
+</code></pre></div>
 <h2 id="recommended-scenario-workflow">Recommended scenario workflow<a class="headerlink" href="#recommended-scenario-workflow" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Choose a baseline (preset + fixed model scale).</li>
@@ -1870,40 +2064,40 @@
 <li>Export and compare summary metrics.</li>
 </ol>
 <h2 id="manual-sweep-template">Manual sweep template<a class="headerlink" href="#manual-sweep-template" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">policyflux</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_engine</span><span class="p">,</span> <span class="n">create_parliamentary_config</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">supports</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">for</span> <span class="n">support</span> <span class="ow">in</span> <span class="n">supports</span><span class="p">:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">config</span> <span class="o">=</span> <span class="n">create_parliamentary_config</span><span class="p">(</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="n">policy_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="p">)</span><span class="o">.</span><span class="n">with_flat</span><span class="p">(</span><span class="n">public_support</span><span class="o">=</span><span class="n">support</span><span class="p">)</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">engine</span> <span class="o">=</span> <span class="n">build_engine</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">engine</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;public_support=</span><span class="si">{</span><span class="n">support</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> -&gt; pass_rate=</span><span class="si">{</span><span class="n">engine</span><span class="o">.</span><span class="n">pass_rate</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">policyflux</span> <span class="kn">import</span> <span class="n">build_engine</span><span class="p">,</span> <span class="n">create_parliamentary_config</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">supports</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">for</span> <span class="n">support</span> <span class="ow">in</span> <span class="n">supports</span><span class="p">:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">config</span> <span class="o">=</span> <span class="n">create_parliamentary_config</span><span class="p">(</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="n">num_actors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        <span class="n">policy_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="p">)</span><span class="o">.</span><span class="n">with_flat</span><span class="p">(</span><span class="n">public_support</span><span class="o">=</span><span class="n">support</span><span class="p">)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="n">engine</span> <span class="o">=</span> <span class="n">build_engine</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="n">engine</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;public_support=</span><span class="si">{</span><span class="n">support</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> -&gt; pass_rate=</span><span class="si">{</span><span class="n">engine</span><span class="o">.</span><span class="n">pass_rate</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="multi-seed-scenario-robustness">Multi-seed scenario robustness<a class="headerlink" href="#multi-seed-scenario-robustness" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">policyflux</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_engine</span><span class="p">,</span> <span class="n">create_presidential_config</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="n">public_support</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">rates</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="n">config</span> <span class="o">=</span> <span class="n">create_presidential_config</span><span class="p">(</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>            <span class="n">num_actors</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>            <span class="n">policy_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>            <span class="n">iterations</span><span class="o">=</span><span class="mi">220</span><span class="p">,</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="p">)</span><span class="o">.</span><span class="n">with_flat</span><span class="p">(</span><span class="n">public_support</span><span class="o">=</span><span class="n">public_support</span><span class="p">)</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="n">engine</span> <span class="o">=</span> <span class="n">build_engine</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        <span class="n">engine</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="n">rates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">pass_rate</span><span class="p">)</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">evaluate</span><span class="p">(</span><span class="mf">0.55</span><span class="p">),</span> <span class="n">evaluate</span><span class="p">(</span><span class="mf">0.65</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">policyflux</span> <span class="kn">import</span> <span class="n">build_engine</span><span class="p">,</span> <span class="n">create_presidential_config</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">public_support</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">rates</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        <span class="n">config</span> <span class="o">=</span> <span class="n">create_presidential_config</span><span class="p">(</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>            <span class="n">num_actors</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>            <span class="n">policy_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>            <span class="n">iterations</span><span class="o">=</span><span class="mi">220</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>        <span class="p">)</span><span class="o">.</span><span class="n">with_flat</span><span class="p">(</span><span class="n">public_support</span><span class="o">=</span><span class="n">public_support</span><span class="p">)</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>        <span class="n">engine</span> <span class="o">=</span> <span class="n">build_engine</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="n">engine</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="n">rates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">pass_rate</span><span class="p">)</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">evaluate</span><span class="p">(</span><span class="mf">0.55</span><span class="p">),</span> <span class="n">evaluate</span><span class="p">(</span><span class="mf">0.65</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="interpreting-scenario-outputs">Interpreting scenario outputs<a class="headerlink" href="#interpreting-scenario-outputs" title="Permanent link">&para;</a></h2>
 <p>Prioritize:</p>
