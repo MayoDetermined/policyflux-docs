@@ -72,6 +72,18 @@ python -c "import policyflux; print(policyflux.__version__)"
 
 If the command prints a version number, the package is available in your active Python environment.
 
+## First 15 minutes plan
+
+Use this sequence to reach a trustworthy first baseline quickly:
+
+1. Install package and verify import.
+2. Run one deterministic baseline.
+3. Repeat with the same seed (consistency check).
+4. Change one parameter (for example `public_support`).
+5. Compare pass-rate delta.
+
+If steps 2 and 3 differ significantly, pause and validate environment consistency before continuing.
+
 ## Minimal simulation
 
 ```python
@@ -198,6 +210,15 @@ model.summary()
 
 !!! warning "Runtime too slow"
     Reduce `num_actors` and `iterations` for exploratory work, then scale up.
+
+## Troubleshooting matrix
+
+| Symptom | Likely cause | Fast check | Fix |
+| --- | --- | --- | --- |
+| `ModuleNotFoundError: policyflux` | wrong interpreter | `python -c "import sys; print(sys.executable)"` | install in that interpreter or switch env |
+| inconsistent first-run results | seed changed or hidden config change | print config + seed before run | freeze seed and vary one variable |
+| very low throughput | oversized exploratory settings | check `num_actors`, `iterations` | downscale for exploration, upscale after validation |
+| hard-to-interpret deltas | too many simultaneous changes | compare config snapshots | isolate one independent variable |
 
 ## What to inspect after run
 

@@ -101,6 +101,138 @@ results = country_comparison.run(
 4. Run multi-seed or Monte Carlo confirmation.
 5. Export and compare summary metrics.
 
+## Practical scenario recipes
+
+Use the following recipes as ready-made experiment templates.
+
+### Recipe 1: Sensitivity to public support
+
+Goal: quantify how sensitive passage rate is to changes in `public_support`.
+
+1. Keep institutional preset fixed.
+2. Sweep `public_support` over a compact range.
+3. Repeat each point for multiple seeds.
+4. Compare mean and min/max passage rate per support level.
+
+```python
+from statistics import mean
+
+from policyflux import build_engine, create_parliamentary_config
+
+supports = [0.40, 0.50, 0.60, 0.70]
+
+for support in supports:
+    rates = []
+    for seed in range(10, 20):
+        cfg = create_parliamentary_config(
+            num_actors=120,
+            policy_dim=2,
+            iterations=220,
+            seed=seed,
+        ).with_flat(public_support=support)
+        eng = build_engine(cfg)
+        eng.run()
+        rates.append(eng.pass_rate)
+
+    print(
+        f"support={support:.2f} -> "
+        f"min={min(rates):.1%}, mean={mean(rates):.1%}, max={max(rates):.1%}"
+    )
+```
+
+### Recipe 2: Institutional A/B comparison
+
+Goal: compare two systems under identical model scale and randomness policy.
+
+1. Pick two presets (for example presidential vs parliamentary).
+2. Fix `num_actors`, `policy_dim`, `iterations`, and seed range.
+3. Run both systems for each seed.
+4. Compare average deltas in passage rate.
+
+```python
+from statistics import mean
+
+from policyflux import build_engine, create_parliamentary_config, create_presidential_config
+
+delta = []
+for seed in range(1, 21):
+    a = create_presidential_config(num_actors=100, policy_dim=2, iterations=250, seed=seed)
+    b = create_parliamentary_config(num_actors=100, policy_dim=2, iterations=250, seed=seed)
+
+    ea = build_engine(a)
+    eb = build_engine(b)
+    ea.run()
+    eb.run()
+    delta.append(ea.pass_rate - eb.pass_rate)
+
+print(f"avg_delta(presidential - parliamentary) = {mean(delta):+.2%}")
+print(f"min_delta={min(delta):+.2%}, max_delta={max(delta):+.2%}")
+```
+
+### Recipe 3: Stability versus policy dimensionality
+
+Goal: test whether conclusions remain stable as `policy_dim` increases.
+
+1. Keep all parameters fixed except `policy_dim`.
+2. Run a small seed sweep for each dimension.
+3. Compare central tendency and spread.
+
+```python
+from statistics import mean
+
+from policyflux import build_engine, create_presidential_config
+
+for dim in [1, 2, 3, 4]:
+    rates = []
+    for seed in range(30, 40):
+        cfg = create_presidential_config(
+            num_actors=120,
+            policy_dim=dim,
+            iterations=240,
+            seed=seed,
+        )
+        eng = build_engine(cfg)
+        eng.run()
+        rates.append(eng.pass_rate)
+
+    print(f"policy_dim={dim}: mean={mean(rates):.1%}, span={(max(rates)-min(rates)):.1%}")
+```
+
+### Recipe 4: Lobbying effect size table
+
+Goal: produce a compact table of effect sizes for reporting.
+
+1. Define baseline lobbying intensity and intervention levels.
+2. Keep seed and model scale aligned.
+3. Report delta from baseline for each level.
+
+```python
+from policyflux import build_engine, create_parliamentary_config
+
+levels = [0.0, 0.2, 0.4, 0.6, 0.8]
+baseline = None
+
+print("level,pass_rate,delta_vs_baseline")
+for level in levels:
+    cfg = create_parliamentary_config(
+        num_actors=100,
+        policy_dim=2,
+        iterations=220,
+        seed=42,
+    ).with_flat(include_lobbying=True, lobbyist_strength=level)
+
+    eng = build_engine(cfg)
+    eng.run()
+
+    if baseline is None:
+        baseline = eng.pass_rate
+    delta = eng.pass_rate - baseline
+    print(f"{level:.1f},{eng.pass_rate:.4f},{delta:+.4f}")
+```
+
+These recipes are intended as starting points. For larger studies, run more seeds,
+record metadata, and keep one independent variable per experiment family.
+
 ## Manual sweep template
 
 ```python

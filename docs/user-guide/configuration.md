@@ -119,6 +119,61 @@ Practical checks before long runs:
 3. validate metrics shape and magnitude,
 4. scale up.
 
+## Parameter sweep workflow
+
+For controlled sweeps, define one independent variable and keep all others fixed.
+
+```python
+from policyflux import build_engine, IntegrationConfig
+
+def run(public_support: float, seed: int = 42) -> float:
+    config = IntegrationConfig.from_flat(
+        num_actors=120,
+        policy_dim=2,
+        iterations=250,
+        seed=seed,
+        include_public_opinion=True,
+        public_support=public_support,
+        aggregation_strategy="average",
+    )
+    engine = build_engine(config)
+    engine.run()
+    return engine.pass_rate
+
+for value in [0.45, 0.55, 0.65, 0.75]:
+    print(f"public_support={value:.2f} -> pass_rate={run(value):.1%}")
+```
+
+Use this pattern for quick monotonicity checks before larger Monte Carlo studies.
+
+## Choosing defaults for new projects
+
+Reasonable starting defaults:
+
+- `num_actors`: 80-150,
+- `policy_dim`: 2,
+- `iterations`: 150-300,
+- `aggregation_strategy`: `average`,
+- one fixed seed for baseline debugging.
+
+Then expand in this order:
+
+1. increase iterations,
+2. add one additional layer,
+3. run seed sweep,
+4. move to parallel Monte Carlo if needed.
+
+## Configuration anti-patterns
+
+Avoid these common mistakes:
+
+- changing seed and layer strength at the same time,
+- changing aggregation strategy mid-comparison,
+- introducing many active layers before baseline validation,
+- omitting documentation for custom aggregation weights.
+
+If interpretability matters, each experiment should have one clear independent variable.
+
 ## Reproducible experiment template
 
 ```python
@@ -142,6 +197,25 @@ baseline = run_once(seed=100, public_support=0.55)
 intervention = run_once(seed=100, public_support=0.65)
 print(f"delta={intervention - baseline:+.2%}")
 ```
+
+## Result logging template
+
+Keep a compact run log for every experiment batch.
+
+```text
+experiment_id: public_support_sweep_v1
+policyflux_version: <package_version>
+engine_type: deterministic
+seed_policy: fixed(42)
+num_actors: 120
+policy_dim: 2
+iterations: 250
+aggregation_strategy: average
+active_layers: [ideal_point, public_opinion]
+independent_variable: public_support
+```
+
+This metadata prevents ambiguity when revisiting results later.
 
 ## Environment settings
 
