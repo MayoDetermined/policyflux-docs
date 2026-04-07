@@ -1,20 +1,15 @@
 # PolicyFlux Documentation
 
-<div class="hero" markdown>
-
 ## Computational framework for legislative process modeling
 
 PolicyFlux provides a structured Python environment for simulating voting dynamics,
 institutional behavior, and policy outcomes. It supports deterministic and stochastic
 execution modes with configurable influence layers and actor models.
 
-[Documentation](getting-started.md){ .md-button .md-button--primary }
-[API Reference](api-overview.md){ .md-button }
+[Documentation](getting-started.md)
+[API Reference](api-overview.md)
 
-</div>
-
-<div class="code-preview" markdown>
-<div class="code-preview__header">Example — baseline simulation</div>
+Example - baseline simulation:
 
 ```python
 from policyflux import build_engine, IntegrationConfig, LayerConfig
@@ -33,65 +28,42 @@ engine.run()
 print(f"Pass rate: {engine.pass_rate:.1%}")
 ```
 
-</div>
-
 ## Overview
 
-<div class="grid cards" markdown>
+### Composable configuration
 
--   :material-tune-variant: **Composable configuration**
+Construct experiments using `IntegrationConfig`, institutional presets,
+and flat parameter overrides. Modify scenario parameters without
+altering simulation internals.
 
-    ---
+### Deterministic and stochastic engines
 
-    Construct experiments using `IntegrationConfig`, institutional presets,
-    and flat parameter overrides. Modify scenario parameters without
-    altering simulation internals.
+Execute single deterministic runs or parallel Monte Carlo batches.
+Compare outcomes across institutional configurations using
+built-in summary metrics.
 
--   :material-chart-line: **Deterministic and stochastic engines**
+### Layered influence model
 
-    ---
+Represent public opinion, lobbying, media pressure, party discipline,
+and agenda control as independent, composable influence layers
+with configurable aggregation.
 
-    Execute single deterministic runs or parallel Monte Carlo batches.
-    Compare outcomes across institutional configurations using
-    built-in summary metrics.
+### Reference documentation
 
--   :material-layers-triple: **Layered influence model**
-
-    ---
-
-    Represent public opinion, lobbying, media pressure, party discipline,
-    and agenda control as independent, composable influence layers
-    with configurable aggregation.
-
--   :material-book-open-variant: **Reference documentation**
-
-    ---
-
-    Complete coverage from introductory guides through auto-generated
-    API reference. All public interfaces are documented with
-    parameter descriptions and usage context.
-
-</div>
+Complete coverage from introductory guides through auto-generated
+API reference. All public interfaces are documented with
+parameter descriptions and usage context.
 
 <hr class="section-divider">
 
 ## Navigation
 
-<div class="nav-cards" markdown>
-
-[:material-lightning-bolt: **Getting Started** <span>Installation and first simulation</span>](getting-started.md)
-
-[:material-api: **API Overview** <span>Public entry points and surface</span>](api-overview.md)
-
-[:material-sitemap-outline: **Architecture** <span>Module layout and design</span>](architecture.md)
-
-[:material-book-open-page-variant: **User Guide** <span>Concepts, layers, engines, presets</span>](user-guide/concepts.md)
-
-[:material-cog-outline: **Configuration** <span>Parameter reference</span>](user-guide/configuration.md)
-
-[:material-source-branch: **Contributing** <span>Development setup</span>](development/contributing.md)
-
-</div>
+- [Getting Started](getting-started.md) - Installation and first simulation
+- [API Overview](api-overview.md) - Public entry points and surface
+- [Architecture](architecture.md) - Module layout and design
+- [User Guide](user-guide/concepts.md) - Concepts, layers, engines, presets
+- [Configuration](user-guide/configuration.md) - Parameter reference
+- [Contributing](development/contributing.md) - Development setup
 
 <hr class="section-divider">
 
